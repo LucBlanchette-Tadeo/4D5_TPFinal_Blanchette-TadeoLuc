@@ -1,0 +1,37 @@
+USE master 
+GO
+
+-- CREATION ou RECREATION de la BD
+IF EXISTS(SELECT * FROM sys.databases WHERE name='NHL_Fictif')
+BEGIN
+	DROP DATABASE NHL_Fictif
+END
+
+CREATE DATABASE NHL_Fictif
+GO
+
+-- Configuration de FILESTREAM
+EXEC sp_configure filestream_access_level, 2 RECONFIGURE
+
+ALTER DATABASE NHL_Fictif
+ADD FILEGROUP NHL_Images CONTAINS FILESTREAM;
+GO
+
+ALTER DATABASE NHL_Fictif
+ADD FILE (
+	NAME = NHL_Images,
+	FILENAME = 'C:\EspaceLabo\FG_Images_2234344'
+)
+TO FILEGROUP NHL_Images
+GO
+
+USE NHL_Fictif
+GO
+
+-- Création des schémas
+CREATE SCHEMA Joueurs
+GO
+CREATE SCHEMA Equipes
+GO
+CREATE SCHEMA Match
+GO

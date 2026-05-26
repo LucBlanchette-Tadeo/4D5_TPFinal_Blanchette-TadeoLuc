@@ -1,0 +1,67 @@
+﻿@model NHLFictif_TPFinal.Models.Equipe
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Equipe</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pays)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pays)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ville)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ville)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Conference)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Conference)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Division)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Division)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateCreation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateCreation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Abbreviation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Abbreviation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VictoiresTotal)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VictoiresTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.EquipeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

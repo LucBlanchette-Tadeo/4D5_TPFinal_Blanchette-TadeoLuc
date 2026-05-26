@@ -10,3 +10,5 @@ ADD FILE (
 )
 TO FILEGROUP FG_Images
 GO
+
+evolve migrate sqlserver -c "Server=.;Initial Catalog=NHL_Fictif;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -s Equipes -s Match -s Joueurs --target-version 1.0
