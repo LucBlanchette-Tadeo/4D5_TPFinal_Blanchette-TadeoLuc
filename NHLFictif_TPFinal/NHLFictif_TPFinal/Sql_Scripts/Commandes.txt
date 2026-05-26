@@ -1,40 +1,6 @@
-COMMANDES POUR LES MIGRATIONS NHL_FICTIF
-==========================================
 
-ÉTAPE 1 : Installer Evolve
----------------------------
-dotnet tool install --global Evolve
+Commande de migration 
+evolve migrate sqlserver -c "Data Source=.;Initial Catalog=NHL_Fictif;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -s Joueurs -s Equipes -s Match -s Utilisateurs --target-version 1.0
 
-ou pour mettre à jour :
-dotnet tool update --global Evolve
-
-
-ÉTAPE 2 : Exécuter InitialCreate.sql
--------------------------------------
-1. Ouvrir SQL Server Management Studio (SSMS)
-2. Ouvrir le fichier : NHLFictif_TPFinal\Sql_Scripts\InitialCreate.sql
-3. Exécuter (F5)
-
-
-ÉTAPE 3 : Exécuter les migrations Evolve
-------------------------------------------
-cd NHLFictif_TPFinal
-
-evolve migrate sqlserver -c "Data Source=.;Initial Catalog=NHL_Fictif;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False" -l
-
-
-ÉTAPE 4 : Compiler le projet
------------------------------
-dotnet build
-
-
-ÉTAPE 5 : Scaffold EF Core
----------------------------
-dotnet ef dbcontext scaffold Name=NHL_Fictif Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Data --context NhlFictifContext --data-annotations --force
-
-
-NOTES :
--------
-- Les migrations doivent être exécutées DANS LE BON ORDRE
-- Les fichiers V1_0__Tables.sql, V1_1__InsertionDonnees.sql, etc. doivent être remplis AVANT d'exécuter les migrations
-- Evolve lit les fichiers SQL du dossier Sql_Scripts en ordre alphabétique
+Commande de scaffold
+dotnet ef dbcontext scaffold Name=NHL_Fictif Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Data --data-annotations --force

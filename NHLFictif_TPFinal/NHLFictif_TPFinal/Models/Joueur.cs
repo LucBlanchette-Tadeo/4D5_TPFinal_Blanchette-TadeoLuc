@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace NHLFictif_TPFinal.Models;
 
 [Table("Joueur", Schema = "Joueurs")]
+[Index("Identifiant", Name = "UC_Joueur_Identifiant", IsUnique = true)]
 public partial class Joueur
 {
     [Key]
@@ -33,6 +34,10 @@ public partial class Joueur
 
     [Column("EquipeID")]
     public int EquipeId { get; set; }
+
+    public Guid Identifiant { get; set; }
+
+    public byte[]? Photo { get; set; }
 
     [ForeignKey("EquipeId")]
     [InverseProperty("Joueurs")]

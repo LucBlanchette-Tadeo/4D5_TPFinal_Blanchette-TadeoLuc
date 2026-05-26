@@ -41,7 +41,7 @@ public partial class NhlFictifContext : DbContext
     {
         modelBuilder.Entity<Changelog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F56A50B71");
+            entity.HasKey(e => e.Id).HasName("PK__changelo__3213E83F8BBA11B7");
 
             entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
         });
@@ -63,6 +63,8 @@ public partial class NhlFictifContext : DbContext
         modelBuilder.Entity<Joueur>(entity =>
         {
             entity.HasKey(e => e.JoueurId).HasName("PK_Joueur_JoueurID");
+
+            entity.Property(e => e.Identifiant).HasDefaultValueSql("(newid())");
 
             entity.HasOne(d => d.Equipe).WithMany(p => p.Joueurs)
                 .OnDelete(DeleteBehavior.ClientSetNull)

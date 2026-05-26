@@ -27,8 +27,15 @@ namespace NHLFictif_TPFinal.Controllers
         // GET: Joueurs
         public async Task<IActionResult> Index()
         {
-            var nhlFictifContext = _context.Joueurs.Include(j => j.Equipe);
-            return View(await nhlFictifContext.ToListAsync());
+            var joueurs = await _context.Joueurs.Include(j => j.Equipe).ToListAsync();
+
+            var joueursVM = joueurs.Select(x => new JoueursImagesViewModel
+            {
+                Joueur = x,
+                PhotoUrl = x.Photo == null ? null : $"data:image/png;base64, {Convert.ToBase64String(x.Photo)}"
+            }).ToList();
+
+            return View(joueursVM);
         }
 
         // GET: Joueurs/Details/5

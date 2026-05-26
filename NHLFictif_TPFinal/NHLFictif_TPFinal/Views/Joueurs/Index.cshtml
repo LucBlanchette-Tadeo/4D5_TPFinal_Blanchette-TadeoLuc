@@ -1,78 +1,46 @@
-﻿@model IEnumerable<NHLFictif_TPFinal.Models.Joueur>
-
+﻿@model IEnumerable<NHLFictif_TPFinal.ViewModels.JoueursImagesViewModel>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h1>Index</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Prenom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Taille)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateNaissance)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nationalite)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DoubleNationalite)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ButsTotal)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Equipe)
-            </th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.Prenom)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.Nom)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.Taille)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.DateNaissance)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.Nationalite)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.DoubleNationalite)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.ButsTotal)</th>
+            <th>@Html.DisplayNameFor(model => model.Joueur.Equipe)</th>
+            <th>Photo</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prenom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Taille)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateNaissance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationalite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DoubleNationalite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ButsTotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipe.EquipeId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.JoueurId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.JoueurId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.JoueurId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.Prenom)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.Nom)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.Taille)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.DateNaissance)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.Nationalite)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.DoubleNationalite)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.ButsTotal)</td>
+                <td>@Html.DisplayFor(modelItem => item.Joueur.Equipe.EquipeId)</td>
+                <td><img alt="@item.Joueur.Nom" src="@item.PhotoUrl" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Joueur.JoueurId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Joueur.JoueurId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Joueur.JoueurId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
