@@ -1,8 +1,0 @@
-USE MASTER;
-GO
-
-IF EXISTS(SELECT * FROM sys.databases WHERE name='NHL_Fictif')
-BEGIN
-    DROP DATABASE NHL_Fictif
-END
-CREATE DATABASE NHL_Fictif
