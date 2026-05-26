@@ -1,0 +1,33 @@
+﻿@model NHLFictif_TPFinal.ViewModels.InscriptionViewModel
+
+<h2>Inscription</h2>
+
+<form asp-action="Inscription" method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        <label asp-for="Pseudonyme"></label>
+        <input asp-for="Pseudonyme" />
+        <span asp-validation-for="Pseudonyme"></span>
+    </div>
+
+    <div>
+        <label asp-for="MotDePasse"></label>
+        <input asp-for="MotDePasse" />
+        <span asp-validation-for="MotDePasse"></span>
+    </div>
+
+    <div>
+        <label asp-for="MotDePasseConfirmation"></label>
+        <input asp-for="MotDePasseConfirmation" />
+        <span asp-validation-for="MotDePasseConfirmation"></span>
+    </div>
+
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <button type="submit">S'inscrire</button>
+</form>

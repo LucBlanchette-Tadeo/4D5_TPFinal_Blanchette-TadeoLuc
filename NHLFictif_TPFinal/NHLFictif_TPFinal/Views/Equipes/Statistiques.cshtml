@@ -1,0 +1,28 @@
+﻿@* Je nai pas réussi a généré la page automatiquement alors j'ai du le coder moi même, désolé si c'est moche
+ *@
+
+@model IEnumerable<NHLFictif_TPFinal.Models.VwStatistiquesEquipe>
+
+<h1>Statistiques des équipes</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Équipe</th>
+            <th>Ville</th>
+            <th>Division</th>
+            <th>Buts Totaux</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.NomEquipe</td>
+                <td>@item.Ville</td>
+                <td>@item.Division</td>
+                <td>@item.ButsTotalEquipe</td>
+            </tr>
+        }
+    </tbody>
+</table>

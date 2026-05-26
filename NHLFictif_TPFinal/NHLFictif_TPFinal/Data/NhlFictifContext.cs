@@ -30,6 +30,8 @@ public partial class NhlFictifContext : DbContext
 
     public virtual DbSet<ParticipationCoach> ParticipationCoaches { get; set; }
 
+    public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
+
     public virtual DbSet<VwStatistiquesEquipe> VwStatistiquesEquipes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -110,6 +112,11 @@ public partial class NhlFictifContext : DbContext
             entity.HasOne(d => d.Match).WithMany(p => p.ParticipationCoaches)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_ParticipationCoach_MatchID");
+        });
+
+        modelBuilder.Entity<Utilisateur>(entity =>
+        {
+            entity.HasKey(e => e.UtilisateurId).HasName("PK_Utilisateur_UtilisateurID");
         });
 
         modelBuilder.Entity<VwStatistiquesEquipe>(entity =>

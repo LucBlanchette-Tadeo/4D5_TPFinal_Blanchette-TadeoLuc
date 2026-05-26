@@ -1,15 +1,22 @@
-using NHLFictif_TPFinal.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using NHLFictif_TPFinal.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 // Ajouter le DbContext
 builder.Services.AddDbContext<NhlFictifContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("NHL_Fictif")));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Utilisateurs/Connexion";
+    options.LogoutPath = "/Utilisateurs/Deconnexion";
+});
 
 var app = builder.Build();
 
@@ -21,6 +28,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
